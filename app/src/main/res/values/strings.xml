@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">MvvMovie</string>
+    <string name="movie_list">Lista de Filmes</string>
+</resources>

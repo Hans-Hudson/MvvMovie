@@ -1,0 +1,59 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+apply from: '../config.gradle'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.0"
+    defaultConfig {
+        applicationId "app.com.hudson.mvvmovie"
+        minSdkVersion 19
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "BASE_URL", "http://www.omdbapi.com/"
+        }
+        debug{
+            buildConfigField "String", "BASE_URL", "\"http://www.omdbapi.com/${System.env.OMDB_API_KEY}\""
+        }
+    }
+    dataBinding {
+        enabled true
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':domain')
+    implementation project(':data')
+
+    implementation deps.kotlin.stdLib
+    implementation deps.android.values()
+    implementation deps.koin.values()
+    implementation deps.archComponents.values()
+    implementation deps.network.values()
+
+
+//    kapt deps.kaptImplements.values()
+    kapt "com.android.databinding:compiler:5.1.1"
+
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+}
+repositories {
+    mavenCentral()
+}
