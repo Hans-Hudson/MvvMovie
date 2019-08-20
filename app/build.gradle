@@ -24,9 +24,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField "String", "BASE_URL", "http://www.omdbapi.com/"
+            buildConfigField "String", "API_KEY", "\"${System.env.OMDB_API_KEY}\""
         }
         debug{
-            buildConfigField "String", "BASE_URL", "\"http://www.omdbapi.com/${System.env.OMDB_API_KEY}\""
+            buildConfigField "String", "BASE_URL", "\"http://www.omdbapi.com/\""
+            buildConfigField "String", "API_KEY", "\"${System.env.OMDB_API_KEY}\""
         }
     }
     dataBinding {
@@ -44,10 +46,8 @@ dependencies {
     implementation deps.koin.values()
     implementation deps.archComponents.values()
     implementation deps.network.values()
-
-
-//    kapt deps.kaptImplements.values()
-    kapt "com.android.databinding:compiler:5.1.1"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.0-RC2'
+    kapt deps.kaptImplements.values()
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
