@@ -2,9 +2,10 @@ apply plugin: 'java-library'
 apply plugin: 'kotlin'
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation project(':domain')
     implementation deps.kotlin.stdLib8
     implementation deps.network.values()
+    implementation project(path: ':domain', configuration: 'default')
+
 }
 
 sourceCompatibility = "7"
