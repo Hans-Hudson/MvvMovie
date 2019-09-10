@@ -1,5 +1,5 @@
 ext.versions = [
-        RetrofitVersion                  : '2.3.0',
+        RetrofitVersion                  : '2.6.1',
         lifecycleComponentVersion        : '1.1.1',
         kotlin_version                   : '1.3.50',
         koin_version                     : '2.0.1',
