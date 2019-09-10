@@ -5,7 +5,9 @@ import app.com.hudson.domain.Entities.Movie
 import app.com.hudson.domain.Repositories.MoviesRepository
 
 class MoviesRepositoryImpl(val api: Api) : MoviesRepository {
-    override fun getMovies(): List<Movie> {
-        return api.getMovies().map { Movie() }
+    override suspend fun getMovies(): Movie {
+        return api.getMovies("harry").run {
+            Movie(this.title)
+        }
     }
 }

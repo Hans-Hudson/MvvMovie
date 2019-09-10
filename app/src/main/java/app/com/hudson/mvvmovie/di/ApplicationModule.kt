@@ -13,7 +13,7 @@ object ApplicationModule {
             Retrofit.Builder()
                 .baseUrl(BuildConfig.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
-                .client(HttpClientConfig().getHttpClient())
+                .client(HttpClientConfig.getHttpClient())
                 .build()
                 .create(Api::class.java)
         }

@@ -1,4 +1,5 @@
 package app.com.hudson.domain.Entities
 
-class Movie {
-}
+data class Movie(
+    val title: String
+)

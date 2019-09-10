@@ -6,8 +6,7 @@ import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
 
-class HttpClientConfig {
-
+object HttpClientConfig {
     fun getHttpClient(): OkHttpClient {
         val client = OkHttpClient.Builder()
             .addInterceptor(object : Interceptor {

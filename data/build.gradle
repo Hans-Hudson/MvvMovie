@@ -4,6 +4,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation deps.kotlin.stdLib8
     implementation deps.network.values()
+    implementation deps.koin.koin
     implementation project(path: ':domain', configuration: 'default')
 
 }

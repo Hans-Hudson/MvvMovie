@@ -1,6 +1,7 @@
 package app.com.hudson.mvvmovie.core
 
 import android.app.Application
+import app.com.hudson.data.di.DataModule
 import app.com.hudson.mvvmovie.di.ApplicationModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -14,9 +15,12 @@ class App : Application() {
         startKoin {
             androidLogger()
             androidContext(this@App)
-            modules(listOf(ApplicationModule.instances))
-
+            modules(
+                listOf(
+                    ApplicationModule.instances,
+                    DataModule.instances
+                )
+            )
         }
     }
-
 }
