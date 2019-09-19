@@ -2,6 +2,7 @@ package app.com.hudson.mvvmovie.core
 
 import android.app.Application
 import app.com.hudson.data.di.DataModule
+import app.com.hudson.domain.di.DomainModule
 import app.com.hudson.mvvmovie.di.ApplicationModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -18,7 +19,8 @@ class App : Application() {
             modules(
                 listOf(
                     ApplicationModule.instances,
-                    DataModule.instances
+                    DataModule.instances,
+                    DomainModule.instance
                 )
             )
         }
