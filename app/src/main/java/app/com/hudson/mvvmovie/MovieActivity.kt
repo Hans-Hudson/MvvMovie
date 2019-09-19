@@ -2,14 +2,13 @@ package app.com.hudson.mvvmovie
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import app.com.hudson.data.remote.contracts.Api
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import org.koin.android.ext.android.inject
 
 class MovieActivity : AppCompatActivity() {
 
-    val api by inject<Api>()
+    val viewmodel by inject<MovieVM>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,8 +16,7 @@ class MovieActivity : AppCompatActivity() {
 
         GlobalScope.launch {
             try {
-                val teste = api.getMovies("harry")
-                teste
+                val teste = viewmodel.getMovies()
             } catch (error: Throwable) {
                 error.stackTrace
             }
