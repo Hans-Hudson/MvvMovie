@@ -7,6 +7,6 @@ import app.com.hudson.domain.contracts.usecases.MoviesUseCase
 class MoviesUsecasesImpl(val api: MoviesRepository) : MoviesUseCase {
     
     override suspend fun execute(): Movie {
-        return api.getMovies()
+        return api.getMovie()
     }
 }
